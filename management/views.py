@@ -46,7 +46,3 @@ class FinanceRecordListCreateView(generics.ListCreateAPIView):
 class FinanceRecordDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = FinanceRecordSerializer
     permission_classes = [IsAuthenticated]
-
-    def perform_update(self, serializer):
-        # Ensure the organization and user remain unchanged
-        serializer.save()

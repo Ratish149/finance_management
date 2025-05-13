@@ -107,13 +107,13 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "https://bdae-103-163-182-42.ngrok-free.app",
+    "https://73aa-103-163-182-47.ngrok-free.app",
 ]
 
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://bdae-103-163-182-42.ngrok-free.app",
     "http://localhost:3000",
+    "https://73aa-103-163-182-47.ngrok-free.app",
 
 ]
 

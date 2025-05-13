@@ -21,14 +21,15 @@ class FinanceRecordSerializer(serializers.ModelSerializer):
         # Check if transaction is RECEIVED and organization is RECEIVABLE
         if (validated_data['transaction_type'] == 'RECEIVED' and
                 organization.transaction_type == 'RECEIVABLE'):
-            # Reduce the amount from organization's balance
             organization.balance -= validated_data['amount']
             organization.save()
         elif (validated_data['transaction_type'] == 'PAID' and
               organization.transaction_type == 'PAYABLE'):
-            # Reduce the amount from organization's balance
             organization.balance -= validated_data['amount']
             organization.save()
+        else:
+            raise serializers.ValidationError(
+                "Transaction type must match organization type: RECEIVED for RECEIVABLE organizations, PAID for PAYABLE organizations")
 
         # Create the finance record
         return super().create(validated_data)
